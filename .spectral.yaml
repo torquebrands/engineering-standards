@@ -1,0 +1,19 @@
+formats:
+  - oas3
+  - oas3.0
+  - oas3.1
+extends:
+  - 'spectral:oas'
+  - https://raw.githubusercontent.com/openapi-contrib/style-guides/master/apisyouwonthate.yml
+  - https://raw.githubusercontent.com/openapi-contrib/style-guides/master/openapi.yml
+rules:
+  properties-camelCase-alphanumeric:
+    description: All Schema properties MUST be camelCase.
+    severity: error
+    recommended: true
+    message: '{{property}} MUST be camelCase'
+    given: '$.definitions..properties[*]~'
+    then:
+      function: casing
+      functionOptions:
+        type: camel
