@@ -1,0 +1,90 @@
+{
+  "title": "DeliveryItemsReturnedEvent",
+  "type": "object",
+  "x-tags": [
+    "payment",
+    "processed",
+    "envelope"
+  ],
+  "description": "Event triggered when a delivery returned by user (inbound flow)",
+  "examples": [
+    {
+      "id": "85e64576-d3f4-581e-62ad-83c42deecc70",
+      "detail-type": "DeliveryItemsReturned",
+      "source": "tbp.clipper-adapter",
+      "account": "051364840382",
+      "time": "2021-08-27T10:09:08Z",
+      "region": "eu-west-1",
+      "resources": [],
+      "detail": {
+        "brand": "tml",
+        "store": "tmluk",
+        "idempotencyKey": "tml#50032980#OrderItemsReturned#2021-07-19T09:34:59.000Z",
+        "orderReference": "50032980",
+        "returns": [
+          {
+            "items": [
+              {
+                "quantity": 1,
+                "sku": 505466224122
+              },
+              {
+                "quantity": 1,
+                "sku": 505466224123
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "detail-type": {
+      "type": "string",
+      "enum": [
+        "OrderApproved"
+      ],
+      "description": "Name of this event"
+    },
+    "detail": {
+      "$ref": "./DeliveryItemsReturnedDetail.json"
+    },
+    "source": {
+      "type": "string",
+      "description": "ID of the system that published this event",
+      "example": "tbp.shift-adapter"
+    },
+    "account": {
+      "type": "string",
+      "example": "051364840380",
+      "minLength": 12,
+      "maxLength": 12,
+      "pattern": "[0-9]{12}",
+      "description": "AWS account of where this event originated"
+    },
+    "time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date-time of when this event was first published.",
+      "example": "2021-04-28T21:09:09Z"
+    },
+    "region": {
+      "type": "string",
+      "description": "AWS region of where this event was generated",
+      "example": "eu-west-1"
+    },
+    "resources": {
+      "type": "array",
+      "maxItems": 0,
+      "description": "Related resources for this event. Will always be empty",
+      "items": {}
+    }
+  },
+  "required": [
+    "detail-type"
+  ]
+}

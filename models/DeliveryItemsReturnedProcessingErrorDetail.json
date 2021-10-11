@@ -1,0 +1,56 @@
+{
+  "title": "DeliveryItemsReturnedProcessingErrorDetail",
+  "description": "",
+  "type": "object",
+  "x-examples": {},
+  "examples": [],
+  "properties": {
+    "brand": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Brand short code identifier"
+    },
+    "store": {
+      "type": "string",
+      "description": "Store short code identifier, used to identify correct instences of downstream services (i.e. SHIFT, ERP)",
+      "minLength": 1
+    },
+    "idempotencyKey": {
+      "type": "string",
+      "description": "Unique key that can be used to avoid processing more than once the same event"
+    },
+    "orderReference": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Order reference number"
+    },
+    "deliveryItemsReturnedEvent": {
+      "$ref": "./DeliveryItemsReturnedEvent.json"
+    },
+    "error": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "brand",
+    "store",
+    "idempotencyKey",
+    "orderReference",
+    "deliveryItemsReturnedEvent",
+    "error"
+  ]
+}

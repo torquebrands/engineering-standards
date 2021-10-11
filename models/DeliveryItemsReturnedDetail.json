@@ -1,0 +1,86 @@
+{
+  "title": "DeliveryItemsReturnedDetail",
+  "description": "Event triggered when a delivery returned by user (inbound flow)",
+  "type": "object",
+  "x-examples": {},
+  "examples": [
+    {
+      "brand": "tml",
+      "store": "tmluk",
+      "idempotencyKey": "tml#50032980#OrderItemsReturned#2021-07-19T09:34:59.000Z",
+      "orderReference": "50032980",
+      "returns": [
+        {
+          "items": [
+            {
+              "quantity": 1,
+              "sku": 505466224122
+            },
+            {
+              "quantity": 1,
+              "sku": 505466224123
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "properties": {
+    "brand": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Brand short code identifier"
+    },
+    "store": {
+      "type": "string",
+      "description": "Store short code identifier, used to identify correct instences of downstream services (i.e. SHIFT, ERP)",
+      "minLength": 1
+    },
+    "idempotencyKey": {
+      "type": "string",
+      "description": "Unique key that can be used to avoid processing more than once the same event"
+    },
+    "orderReference": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Order reference number"
+    },
+    "returns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "description": "Array of items that were included in this return",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sku": {
+                  "type": "number",
+                  "description": "SKU of the item that has been returned"
+                },
+                "quantity": {
+                  "type": "number",
+                  "description": "Quantity of the item that has been returned"
+                }
+              },
+              "required": [
+                "sku",
+                "quantity"
+              ]
+            }
+          }
+        },
+        "required": [
+          "items"
+        ]
+      }
+    }
+  },
+  "required": [
+    "brand",
+    "orderReference",
+    "returns"
+  ]
+}
