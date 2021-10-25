@@ -45,10 +45,10 @@
     },
     "detail-type": {
       "type": "string",
+      "description": "Name of this event",
       "enum": [
-        "OrderApproved"
-      ],
-      "description": "Name of this event"
+        "DeliveryItemsReturned"
+      ]
     },
     "detail": {
       "$ref": "./DeliveryItemsReturnedDetail.json"
