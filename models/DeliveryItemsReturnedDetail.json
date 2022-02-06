@@ -45,6 +45,18 @@
       "minLength": 1,
       "description": "Order reference number"
     },
+    "returnedAt": {
+      "type": "string",
+      "description": "Time string."
+    },
+    "commerceChannel": {
+      "type": "string",
+      "description": "Error related to the commerce channel."
+    },
+    "correlationId": {
+      "type": "string",
+      "description": "Correlation Id to track."
+    },
     "returns": {
       "type": "array",
       "items": {
@@ -63,6 +75,18 @@
                 "quantity": {
                   "type": "number",
                   "description": "Quantity of the item that has been returned"
+                },
+                "returnType": {
+                  "type": "string",
+                  "description": "Good or bad return."
+                },
+                "reasonCode": {
+                  "type": "string",
+                  "description": "Code related to the return."
+                },
+                "reason": {
+                  "type": "string",
+                  "description": "Return reason."
                 }
               },
               "required": [
@@ -81,6 +105,9 @@
   "required": [
     "brand",
     "orderReference",
+    "returnedAt",
+    "commerceChannel",
+    "correlationId",
     "returns"
   ]
 }
